@@ -1,45 +1,64 @@
 import React from 'react';
 
+const users = [
+{
+  name: 'Anthony',
+  age: 10,
+},
+{
+  name: 'John',
+  age: 30
+},
+{
+  name: 'Michael',
+  age: 50,
+},
+{
+  name: 'Chad',
 
-class App extends React.Component{
-  render(){
-    const greeting = 'Hi, ';
-    const dom = <h1 className=''>{greeting}hello react</h1>
-    return (
-      <div>
-        <h1>{dom}</h1>
-        <input type='text' 
-          onClick={()=>{console.log('clicked')}}
-        />
-        <label htmlFor='bar'>bar
-        </label>
-        <SubComponent />
-        <SubComponent />
-        <SubComponent />
-      </div>
-    )
-  }
+},
+{
+
+},
+]
+
+const App = () => {
+  const profiles = users;
+  return(
+    <div>
+      {
+        profiles.map((profile, index)=>{
+          return <User key={index} name={profile.name} age={profile.age}/>
+        })
+      }
+    </div>
+  )
 }
 
-const SubComponent = () => {
-  return <div>this is functional component</div>
+const User = (props) => {
+  return <div>Hi, I am {props.name}. Currently {props.age} years old.</div>
 }
-// function App() {
-//   const dom = <h1>Hello, World</h1>;
-//   return dom;
+
+
+// const App = () => {
+//   return(
+//     <div>
+//       <User name={"Anthony"} age={10}/>
+//       <User name={"John"} age={10}/>
+//       <User name={"Michael"} age={10}/>
+//       <User name={"Chad"} age={10}/>
+//     </div>
+//   )
 // }
-/*
-class App extends Component{
-  rener() {
-    return React.createElement(
-      'div',
-      null,
-      'hello world'
-    )
-  }
-}
-}
- */
+
+// const User = (props) => {
+//   return <div>Hi, I am {props.name}. Currently {props.age} years old.</div>
+// }
 
 export default App;
 
+
+User.defaultProps = {
+  name: 'no name',
+  age: 100
+}
