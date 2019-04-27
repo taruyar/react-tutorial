@@ -13,9 +13,16 @@ class App extends React.Component{
         />
         <label htmlFor='bar'>bar
         </label>
+        <SubComponent />
+        <SubComponent />
+        <SubComponent />
       </div>
     )
   }
+}
+
+const SubComponent = () => {
+  return <div>this is functional component</div>
 }
 // function App() {
 //   const dom = <h1>Hello, World</h1>;
