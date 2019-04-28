@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 
-// User.defaultProps = {
-//   name: 'no name',
-//   age: 100
-// }
-
 const App = () => (<Counter></Counter>)
 
 class Counter extends Component {
