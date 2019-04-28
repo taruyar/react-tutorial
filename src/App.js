@@ -1,66 +1,40 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
-const users = [
-{
-  name: 'Anthony',
-  age: 10,
-},
-{
-  name: 'John',
-  age: 30
-},
-{
-  name: 'Michael',
-  age: 50,
-},
-{
-  name: 'Chad',
-  age: 35,
-},
-]
+import React, { Component } from 'react';
 
 // User.defaultProps = {
 //   name: 'no name',
 //   age: 100
 // }
 
-const App = () => {
-  const profiles = users;
-  return(
-    <div>
-      {
-        profiles.map((profile, index)=>{
-          return <User key={index} name={profile.name} age={profile.age}/>
-        })
-      }
-    </div>
-  )
+const App = () => (<Counter></Counter>)
+
+class Counter extends Component {
+  constructor(props){
+    super(props)
+    this.state = { count: 0}
+  };
+
+  handleAddition = () => {
+    this.setState({count: this.state.count + 1})
+  };
+
+  handleSubtraction = () => {
+    console.log('minus called')
+    this.setState({count: this.state.count - 1})
+  };
+  render(){
+    return(
+      <React.Fragment>
+        <div>count: {this.state.count}</div>
+        <button onClick={this.handleAddition}>
+        +
+        </button>
+        <button onClick={this.handleSubtraction}>
+        -
+        </button>
+      </React.Fragment>
+    )
+  }
 }
-
-const User = (props) => {
-  return <div>Hi, I am {props.name}. Currently {props.age} years old.</div>
-}
-
-User.propTypes = {
-  name: PropTypes.string,
-  age: PropTypes.number.isRequired
-
-}
-
-// const App = () => {
-//   return(
-//     <div>
-//       <User name={"Anthony"} age={10}/>
-//       <User name={"John"} age={10}/>
-//       <User name={"Michael"} age={10}/>
-//       <User name={"Chad"} age={10}/>
-//     </div>
-//   )
-// }
-
-// const User = (props) => {
-//   return <div>Hi, I am {props.name}. Currently {props.age} years old.</div>
-// }
 
 export default App;
+
