@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import _ from 'lodash'
+import { Link } from 'react-router-dom'
 
 import { readEvents } from '../actions';
 
 class EventsIndex extends Component {
   componentDidMount(){
+    console.log('Components: componentDidMount')
     //外部のAPIサーバに対してHTTPリクエストを送信し、情報を取得する
     this.props.readEvents()
   }
 
   renderEvents(){
+    console.log('Components: renderEvents')
     return _.map(this.props.events, event => (
       <tr key={event.id}>
         <td>{event.id}</td>
@@ -21,20 +24,22 @@ class EventsIndex extends Component {
   }
 
   render(){
+    console.log('Components: render HTML')
     return (
       <React.Fragment>
         <table>
           <thead>
             <tr>
               <th>ID</th>
-              <th>TITLE</th>
-              <th>BODY</th>
+              <th>Title</th>
+              <th>Body</th>          
             </tr>
           </thead>
           <tbody>
             {this.renderEvents()}
           </tbody>
-        </table>
+          </table>
+        <Link to ='/events/new'>New Event</Link>
       </React.Fragment>
     )
   }
